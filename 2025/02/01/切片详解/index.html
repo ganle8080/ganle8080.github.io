@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ganle8080.cc","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="认识切片首先要知道，切片不是长度可变的数组，切片本质上是对数组的一个引用，但其大小是动态变化的，不像数组那样固定，切片在golang也是属于引用数据类型。切片的底层实现如图所示：  切片的结构体主要包含三个部分：  指向底层数组的指针：指向切片所引用的底层数组的内存地址。 切片的长度（len）：切片中包含的元素个数。 切片的容量（cap）：切片所能容纳的元素个数（即从切片的开始位置到底层数组的末尾">
+<meta property="og:type" content="article">
+<meta property="og:title" content="切片">
+<meta property="og:url" content="http://ganle8080.cc/2025/02/01/%E5%88%87%E7%89%87%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="程序人生">
+<meta property="og:description" content="认识切片首先要知道，切片不是长度可变的数组，切片本质上是对数组的一个引用，但其大小是动态变化的，不像数组那样固定，切片在golang也是属于引用数据类型。切片的底层实现如图所示：  切片的结构体主要包含三个部分：  指向底层数组的指针：指向切片所引用的底层数组的内存地址。 切片的长度（len）：切片中包含的元素个数。 切片的容量（cap）：切片所能容纳的元素个数（即从切片的开始位置到底层数组的末尾">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ganle8080.cc/images/202502101132.png">
+<meta property="article:published_time" content="2025-01-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-02-10T09:12:59.415Z">
+<meta property="article:author" content="苏秉杰">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ganle8080.cc/images/202502101132.png">
+
+
+<link rel="canonical" href="http://ganle8080.cc/2025/02/01/%E5%88%87%E7%89%87%E8%AF%A6%E8%A7%A3/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://ganle8080.cc/2025/02/01/%E5%88%87%E7%89%87%E8%AF%A6%E8%A7%A3/","path":"2025/02/01/切片详解/","title":"切片"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>切片 | 程序人生</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">程序人生</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-作者介绍（应聘信息）"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>作者介绍（应聘信息）</a></li><li class="menu-item menu-item-知识海"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>知识海</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A4%E8%AF%86%E5%88%87%E7%89%87"><span class="nav-number">1.</span> <span class="nav-text">认识切片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B"><span class="nav-number">2.</span> <span class="nav-text">快速上手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#make%E5%88%9B%E5%BB%BA%E5%88%87%E7%89%87%E8%AF%A6%E8%A7%A3"><span class="nav-number">3.</span> <span class="nav-text">make创建切片详解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%87%E5%89%B2%E5%88%9B%E5%BB%BA%E5%88%87%E7%89%87%E8%AF%A6%E8%A7%A3"><span class="nav-number">4.</span> <span class="nav-text">切割创建切片详解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%87%E7%89%87%E7%9A%84%E5%B8%B8%E8%A7%81%E4%BD%BF%E7%94%A8%E5%92%8C%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98"><span class="nav-number">5.</span> <span class="nav-text">切片的常见使用和相关问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%8D%E5%8E%86%E5%88%87%E7%89%87"><span class="nav-number">5.1.</span> <span class="nav-text">遍历切片</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#for%E5%BE%AA%E7%8E%AF%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F"><span class="nav-number">5.1.1.</span> <span class="nav-text">for循环遍历方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">5.1.2.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#range%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F"><span class="nav-number">5.1.3.</span> <span class="nav-text">range遍历方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%89%B2%E5%88%87%E7%89%87"><span class="nav-number">5.2.</span> <span class="nav-text">分割切片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6%E5%88%87%E7%89%87%E5%85%83%E7%B4%A0"><span class="nav-number">5.3.</span> <span class="nav-text">复制切片元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%87%E7%89%87%E7%9A%84%E6%89%A9%E5%AE%B9%E6%9C%BA%E5%88%B6"><span class="nav-number">5.4.</span> <span class="nav-text">切片的扩容机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E3%80%81%E5%88%A0%E9%99%A4%E5%88%87%E7%89%87%E5%85%83%E7%B4%A0"><span class="nav-number">5.5.</span> <span class="nav-text">修改、删除切片元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%91%E5%88%87%E7%89%87%E5%B0%BE%E9%83%A8%E5%A2%9E%E5%8A%A0%E5%85%83%E7%B4%A0"><span class="nav-number">5.6.</span> <span class="nav-text">向切片尾部增加元素</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="苏秉杰"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">苏秉杰</p>
+  <div class="site-description" itemprop="description">2025-02 还活着，还能更新</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://www.runoob.com/" title="https:&#x2F;&#x2F;www.runoob.com" rel="noopener" target="_blank">菜鸟教程（学会就不是菜鸟）</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://chat.deepseek.com/" title="https:&#x2F;&#x2F;chat.deepseek.com" rel="noopener" target="_blank">DeepSeek（强大的AI工具）</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.topgoer.cn/" title="https:&#x2F;&#x2F;www.topgoer.cn" rel="noopener" target="_blank">地鼠文档（不错的Go学习站）</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://leetcode.cn/" title="https:&#x2F;&#x2F;leetcode.cn" rel="noopener" target="_blank">力扣（LeetCode）</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ganle8080.cc/2025/02/01/%E5%88%87%E7%89%87%E8%AF%A6%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="苏秉杰">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="程序人生">
+      <meta itemprop="description" content="2025-02 还活着，还能更新">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="切片 | 程序人生">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          切片
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-02-01 00:00:00" itemprop="dateCreated datePublished" datetime="2025-02-01T00:00:00+08:00">2025-02-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-02-10 17:12:59" itemprop="dateModified" datetime="2025-02-10T17:12:59+08:00">2025-02-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">golang基础教程</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="认识切片"><a href="#认识切片" class="headerlink" title="认识切片"></a>认识切片</h2><p>首先要知道，切片不是长度可变的数组，切片本质上是对数组的一个引用，但其大小是动态变化的，不像数组那样固定，切片在golang也是属于引用数据类型。切片的底层实现如图所示：</p>
+<p><img src="/../images/202502101132.png" alt="202502101132"></p>
+<p>切片的结构体主要包含三个部分：</p>
+<ul>
+<li>指向底层数组的指针：指向切片所引用的底层数组的内存地址。</li>
+<li>切片的长度（len）：切片中包含的元素个数。</li>
+<li>切片的容量（cap）：切片所能容纳的元素个数（即从切片的开始位置到底层数组的末尾的元素个数）。</li>
+</ul>
+<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a><strong>快速上手</strong></h2><p>下面我们来介绍几种切片的创建方式</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//	方法一，变量声明初始化</span></span><br><span class="line">	<span class="keyword">var</span> slice1 []<span class="type">int</span></span><br><span class="line">	slice1 = []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;</span><br><span class="line">	fmt.Printf(<span class="string">&quot;方式一，变量声明初始化方式：slice1: %v\n&quot;</span>, slice1)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//	方法二，短变量声明初始化</span></span><br><span class="line">	slice2 := []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line">	fmt.Printf(<span class="string">&quot;方法二，短变量声明初始化：slice2: %v\n&quot;</span>, slice2)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//	方法三，使用make创建</span></span><br><span class="line">	slice3 := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;方法三，使用make创建：slice3: %v\n&quot;</span>, slice3)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//	方法四，从数组中切割创建</span></span><br><span class="line">	arr := [<span class="number">5</span>]<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line">	slice4 := arr[<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line">	fmt.Printf(<span class="string">&quot;方法四，从数组中切割创建：slice4: %v\n&quot;</span>, slice4)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="make创建切片详解"><a href="#make创建切片详解" class="headerlink" title="make创建切片详解"></a><strong>make创建切片详解</strong></h2><p>用make创建切片的时候，需要在make传递几个参数</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">slice := <span class="built_in">make</span>(数据类型,切片长度,切片容量)</span><br></pre></td></tr></table></figure>
+
+<p>其中数据类型和切片长度是在make创建的时候必须填写的，切片容量非必填，如果不填写切片容量时会默认切片容量和切片长度相等。</p>
+<h2 id="切割创建切片详解"><a href="#切割创建切片详解" class="headerlink" title="切割创建切片详解"></a><strong>切割创建切片详解</strong></h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr := [5]int&#123;1, 2, 3, 4, 5&#125;</span><br><span class="line">slice4 := arr[1:3]</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，我直接从数组 arr 中将下表在1和3之间的元素都复制了一份到切片slice4了，其中是不包含下标1和3的，如果想复制全部元素可以不填写下标，如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr := [5]int&#123;1, 2, 3, 4, 5&#125;</span><br><span class="line">slice4 := arr[:]</span><br></pre></td></tr></table></figure>
+
+<p> 这样就可以复制整个数组元素，如果只想复制下标1之后的元素，可以这么写</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr := [5]int&#123;1, 2, 3, 4, 5&#125;</span><br><span class="line">slice4 := arr[1:]</span><br></pre></td></tr></table></figure>
+
+<h2 id="切片的常见使用和相关问题"><a href="#切片的常见使用和相关问题" class="headerlink" title="切片的常见使用和相关问题"></a><strong>切片的常见使用和相关问题</strong></h2><h3 id="遍历切片"><a href="#遍历切片" class="headerlink" title="遍历切片"></a><strong>遍历切片</strong></h3><h4 id="for循环遍历方式"><a href="#for循环遍历方式" class="headerlink" title="for循环遍历方式"></a>for循环遍历方式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">	sliceInt := []int&#123;1, 2, 3, 4, 5, 6, 7&#125;</span><br><span class="line"></span><br><span class="line">	for i := 0; i &lt; len(sliceInt); i++ &#123;</span><br><span class="line">		fmt.Printf(&quot;sliceInt[i]: %v\n&quot;, sliceInt[i])</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 运行结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sliceInt[i]: 1</span><br><span class="line">sliceInt[i]: 2</span><br><span class="line">sliceInt[i]: 3</span><br><span class="line">sliceInt[i]: 4</span><br><span class="line">sliceInt[i]: 5</span><br><span class="line">sliceInt[i]: 6</span><br><span class="line">sliceInt[i]: 7</span><br></pre></td></tr></table></figure>
+
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4><h4 id="range遍历方式"><a href="#range遍历方式" class="headerlink" title="range遍历方式"></a>range遍历方式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">	sliceInt := []int&#123;1, 2, 3&#125;</span><br><span class="line"></span><br><span class="line">	for index, value := range sliceInt &#123;</span><br><span class="line">		fmt.Printf(&quot;index: %v,value: %v\n&quot;, index, value)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 运行结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">index: 0,value: 1</span><br><span class="line">index: 1,value: 2</span><br><span class="line">index: 2,value: 3</span><br></pre></td></tr></table></figure>
+
+<h3 id="分割切片"><a href="#分割切片" class="headerlink" title="分割切片"></a><strong>分割切片</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">	sliceInt := []int&#123;1, 2, 3, 4, 5, 6, 7&#125;</span><br><span class="line"></span><br><span class="line">	//	分割后赋值给newSlice</span><br><span class="line">	newSlice := sliceInt[1:4]</span><br><span class="line">	fmt.Printf(&quot;newSlice: %v\n&quot;, newSlice)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="复制切片元素"><a href="#复制切片元素" class="headerlink" title="复制切片元素"></a><strong>复制切片元素</strong></h3><p>在 Go 语言中，复制切片可以使用 copy 内建函数。copy 函数的基本语法是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">copy(新切片, 原始切片)</span><br></pre></td></tr></table></figure>
+
+<p> 参考代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">	sliceInt := []int&#123;1, 2, 3, 4, 5, 6, 7&#125;</span><br><span class="line"></span><br><span class="line">	newSlice := make([]int, len(sliceInt))</span><br><span class="line">	copy(newSlice, sliceInt)</span><br><span class="line">	fmt.Printf(&quot;newSlice: %v\n&quot;, newSlice)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">newSlice: [1 2 3 4 5 6 7]</span><br></pre></td></tr></table></figure>
+
+<p> 使用内置函数copy的时候，需要注意确保目标切片的长度和容量都足够，这样才能进行元素的复制。也可以使用另外一种内置函数来进行复制，如下面代码所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">	sliceInt := []int&#123;1, 2, 3, 4, 5, 6, 7&#125;</span><br><span class="line"></span><br><span class="line">	newSlice := []int&#123;&#125;</span><br><span class="line">	newSlice = append(newSlice, sliceInt...)</span><br><span class="line">	fmt.Printf(&quot;newSlice: %v\n&quot;, newSlice)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 使用内置函数append的时候就不需要顾及切片的长度和容量了，因为append是在切片的尾部追加元素，它会自动触发切片的扩容机制。</p>
+<h3 id="切片的扩容机制"><a href="#切片的扩容机制" class="headerlink" title="切片的扩容机制"></a><strong>切片的扩容机制</strong></h3><p>切片的扩容策略：</p>
+<p>切片通常是翻倍来进行扩容的</p>
+<p>当切片的容量小于1024的时候，通常是翻倍扩容切片的容量</p>
+<p>当切片的容量大于1024的时候，扩容的增量会变小，有可能是增加容量大25%</p>
+<p>扩容时，go会创建一个新的底层数组，将原数组的元素复制到新数组中，这样会有一定到性能开销，如果数据量过大或者频繁的扩容可能会影响性能。</p>
+<h3 id="修改、删除切片元素"><a href="#修改、删除切片元素" class="headerlink" title="修改、删除切片元素"></a><strong>修改、删除切片元素</strong></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">	sliceInt := []int&#123;1, 2, 3, 4, 5, 6, 7&#125;</span><br><span class="line">	fmt.Printf(&quot;原始切片: %v\n&quot;, sliceInt)</span><br><span class="line"></span><br><span class="line">	//	改变下标为0的元素</span><br><span class="line">	sliceInt[0] = 9</span><br><span class="line">	fmt.Printf(&quot;改变下标之后: %v\n&quot;, sliceInt)</span><br><span class="line"></span><br><span class="line">	//	删除下标为index的元素</span><br><span class="line">	index := 1</span><br><span class="line">	sliceInt = append(sliceInt[:index], sliceInt[index+1:]...)</span><br><span class="line">	fmt.Printf(&quot;删除后: %v\n&quot;, sliceInt)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="向切片尾部增加元素"><a href="#向切片尾部增加元素" class="headerlink" title="向切片尾部增加元素"></a><strong>向切片尾部增加元素</strong></h3><p>使用append即可</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/01/01/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-05-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%AF%A6%E8%A7%A3/" rel="prev" title="05-字符串详解">
+                  <i class="fa fa-angle-left"></i> 05-字符串详解
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2025/02/10/%E9%A6%96%E9%A1%B5%E7%BD%AE%E9%A1%B6%E6%96%87%E7%AB%A0/" rel="next" title="开始挑战新副本！！！2025！！！">
+                  开始挑战新副本！！！2025！！！ <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">苏秉杰</span>
+  </div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
