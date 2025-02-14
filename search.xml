@@ -10,195 +10,44 @@
 ]]></content>
   </entry>
   <entry>
-    <title>01-前言和helloworld</title>
-    <url>/2025/01/01/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-01-%E5%89%8D%E8%A8%80%E5%92%8Chelloworld/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="go语言特性"><a href="#go语言特性" class="headerlink" title="go语言特性"></a>go语言特性</h2><p>Go语言（或 Golang）是Google开发的开源编程语言，诞生于2006年1月2日下午15点4分5秒，于2009年11月开源，2012年发布go稳定版。Go语言在多核并发上拥有原生的设计优势，Go语言从底层原生支持并发，无须第三方库、开发者的编程技巧和开发经验。</p>
-<p>go是非常年轻的一门语言，它的主要目标是“兼具Python 等动态语言的开发速度和C&#x2F;C++等编译型语言的性能与安全性”</p>
-<p>很多公司，特别是中国的互联网公司，即将或者已经完成了使用 Go 语言改造旧系统的过程。经过 Go 语言重构的系统能使用更少的硬件资源获得更高的并发和I&#x2F;O吞吐表现。充分挖掘硬件设备的潜力也满足当前精细化运营的市场大环境。</p>
-<h2 id="go适合做什么"><a href="#go适合做什么" class="headerlink" title="go适合做什么"></a>go适合做什么</h2><ul>
-<li>服务端开发</li>
-<li>分布式系统，微服务</li>
-<li>网络编程</li>
-<li>区块链开发</li>
-<li>内存KV数据库，例如boltDB、levelDB</li>
-<li>云平台</li>
-</ul>
-<h2 id="目前go语言前景"><a href="#目前go语言前景" class="headerlink" title="目前go语言前景"></a>目前go语言前景</h2><p>目前Go语言已经⼴泛应用于人工智能、云计算开发、容器虚拟化、⼤数据开发、数据分析及科学计算、运维开发、爬虫开发、游戏开发等领域</p>
-<h1 id="helloworld"><a href="#helloworld" class="headerlink" title="helloworld"></a>helloworld</h1><h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><p>成功第一步-&gt;创建一个文件夹</p>
-<p>创建main.go</p>
-<p>编写程序</p>
-<p>运行命令</p>
+    <title></title>
+    <url>/2025/02/10/fmt%E5%8C%85%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/weixin_43989347/article/details/134243730?ops_request_misc=&request_id=&biz_id=102&utm_term=golang%E7%9A%84%25c&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-134243730.142%5Ev101%5Epc_search_result_base2&spm=1018.2226.3001.4187">参考文档</a></p>
+<p>快速上手</p>
 ]]></content>
-      <categories>
-        <category>golang基础教程</category>
-      </categories>
   </entry>
   <entry>
-    <title>03-数据类型</title>
-    <url>/2025/01/01/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-03-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
-    <content><![CDATA[<p>学习go这门后端编程语言，其中很大一部分时间我们是在和数据打交道，如何拿到数据，创建数据和处理数据就是我们的日常工作内容。在前面章节中，我们已经接触了int类型和string类型，在本章节中，我们来了解一下Go语言中的数据类型，后面会对这些数据类型进行精细的讲解</p>
-<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p>Go 语言按类别有以下几种数据类型：布尔型、数字类型、字符串类型、派生类型</p>
-<h2 id="布尔型"><a href="#布尔型" class="headerlink" title="布尔型"></a>布尔型</h2><p>布尔型的值只可以是常量 true 或者 false。一个简单的例子：var b bool &#x3D; true。</p>
-<h2 id="数字类型"><a href="#数字类型" class="headerlink" title="数字类型"></a>数字类型</h2><p>数字类型又分为整型和浮点类型，整型也就是如1这样的数字，浮点型类似于3.1415927这样的带小数的</p>
-<p>下表可参考go中的常见数字类型</p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>类别</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>int</td>
-<td>其他数字类型</td>
-<td>32 或 64 位</td>
-</tr>
-<tr>
-<td>uint</td>
-<td>其他数字类型</td>
-<td>32 或 64 位</td>
-</tr>
-<tr>
-<td>uint8</td>
-<td>整型</td>
-<td>无符号 8 位整型 (0 到 255)</td>
-</tr>
-<tr>
-<td>uint16</td>
-<td>整型</td>
-<td>无符号 16 位整型 (0 到 65535)</td>
-</tr>
-<tr>
-<td>uint32</td>
-<td>整型</td>
-<td>无符号 32 位整型 (0 到 4294967295)</td>
-</tr>
-<tr>
-<td>uint64</td>
-<td>整型</td>
-<td>无符号 64 位整型 (0 到 18446744073709551615)</td>
-</tr>
-<tr>
-<td>int8</td>
-<td>整型</td>
-<td>有符号 8 位整型 (-128 到 127)</td>
-</tr>
-<tr>
-<td>int16</td>
-<td>整型</td>
-<td>有符号 16 位整型 (-32768 到 32767)</td>
-</tr>
-<tr>
-<td>int32</td>
-<td>整型</td>
-<td>有符号 32 位整型 (-2147483648 到 2147483647)</td>
-</tr>
-<tr>
-<td>int64</td>
-<td>整型</td>
-<td>有符号 64 位整型 (-9223372036854775808 到 9223372036854775807)</td>
-</tr>
-<tr>
-<td>float32</td>
-<td>浮点型</td>
-<td>IEEE-754 32位浮点型数</td>
-</tr>
-<tr>
-<td>float64</td>
-<td>浮点型</td>
-<td>IEEE-754 64位浮点型数</td>
-</tr>
-<tr>
-<td>complex64</td>
-<td>浮点型</td>
-<td>32 位实数和虚数</td>
-</tr>
-<tr>
-<td>complex128</td>
-<td>浮点型</td>
-<td>64 位实数和虚数</td>
-</tr>
-<tr>
-<td>byte</td>
-<td>其他数字类型</td>
-<td>类似 uint8</td>
-</tr>
-<tr>
-<td>rune</td>
-<td>其他数字类型</td>
-<td>类似 int32</td>
-</tr>
-<tr>
-<td>uintptr</td>
-<td>其他数字类型</td>
-<td>无符号整型，用于存放一个指针</td>
-</tr>
-</tbody></table>
-<h2 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h2><p>字符串就是一串固定长度的字符连接起来的字符序列。Go 的字符串是由单个字节连接起来的。Go 语言的字符串的字节使用 UTF-8 编码标识 Unicode 文本。</p>
-<h2 id="派生类型"><a href="#派生类型" class="headerlink" title="派生类型"></a>派生类型</h2><ul>
-<li>(a) 指针类型（Pointer）</li>
-<li>(b) 数组类型</li>
-<li>(c) 结构化类型(struct)</li>
-<li>(d) Channel 类型</li>
-<li>(e) 函数类型</li>
-<li>(f) 切片类型</li>
-<li>(g) 接口类型（interface）</li>
-<li>(h) Map 类型</li>
-</ul>
+    <title></title>
+    <url>/2025/02/10/rune%E7%B1%BB%E5%9E%8B/</url>
+    <content><![CDATA[<p>rune 是 int32 的别名，在所有方面都等同于 int32 ，按照约定，它用于区分字符值和整数值。</p>
+<p>说的通俗一点就是 rune 一个值代表的就是一个 Unicode 字符，因为一个 Go 语言中字符串编码为 UTF-</p>
+<p>8 ，使用 1-4 字节就可以表示一个字符，所以使用 int32 类型范围就可以完美适配。</p>
+<p>我们常在处理中文字符串的时候用到rune类型</p>
 ]]></content>
-      <categories>
-        <category>golang基础教程</category>
-      </categories>
   </entry>
   <entry>
     <title></title>
-    <url>/2025/02/10/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-07-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E6%8C%87%E9%92%88%E8%AF%A6%E8%A7%A3/</url>
+    <url>/2025/02/10/mysql%E7%9A%84%E4%BA%8B%E5%8A%A1/</url>
+    <content><![CDATA[<p>事务的四大基本特性ACID</p>
+<p>原子性，原子性是由undo-log来保证的，它记录了需要回滚的日志信息</p>
+<p>一致性，其他三大特性来保证</p>
+<p>持久性，redo-log来保证</p>
+<p>隔离性，mvcc来保证</p>
+]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2025/02/10/docker%E6%95%99%E7%A8%8B-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title></title>
-    <url>/2025/02/10/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-08-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-Map%E8%AF%A6%E8%A7%A3/</url>
+    <url>/2025/02/10/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title></title>
-    <url>/2025/02/10/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-09-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E7%BB%93%E6%9E%84%E4%BD%93%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2025/02/10/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-10-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6-%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5-if/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2025/02/10/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-11-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6-%20%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5-switch/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2025/02/10/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-12-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6-%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5-%20select/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2025/02/10/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-13-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6-%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-for/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2025/02/10/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-14-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6-%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-range/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2025/02/10/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-15-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6-%E5%BE%AA%E7%8E%AF%E6%8E%A7%E5%88%B6continue%E3%80%81break%E5%92%8Cgoto/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2025/02/10/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-16-%E5%87%BD%E6%95%B0-%E4%B8%89%E8%A6%81%E7%B4%A0/</url>
+    <url>/2025/02/10/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-19-%E6%96%B9%E6%B3%95-%E8%AE%A4%E8%AF%86%E6%96%B9%E6%B3%95/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
@@ -213,84 +62,240 @@
   </entry>
   <entry>
     <title></title>
-    <url>/2025/02/10/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-19-%E6%96%B9%E6%B3%95-%E8%AE%A4%E8%AF%86%E6%96%B9%E6%B3%95/</url>
+    <url>/2025/02/10/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-16-%E5%87%BD%E6%95%B0-%E4%B8%89%E8%A6%81%E7%B4%A0/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>02-变量和常量</title>
-    <url>/2025/01/01/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-02-%E5%8F%98%E9%87%8F%E5%92%8C%E5%B8%B8%E9%87%8F/</url>
-    <content><![CDATA[<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>变量就是声明后还会改变的量，比如你水杯里面的水或者你的钱包里面的钱就是变量，他们会随着你的使用情况来进行变化，再比如你的年龄也是变量，你的年龄会逐年累加。</p>
-<h2 id="变量的简单使用"><a href="#变量的简单使用" class="headerlink" title="变量的简单使用"></a>变量的简单使用</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> your_money <span class="type">string</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;your_money: %v\n&quot;</span>, your_money)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title></title>
+    <url>/2025/02/10/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-15-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6-%E5%BE%AA%E7%8E%AF%E6%8E%A7%E5%88%B6continue%E3%80%81break%E5%92%8Cgoto/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2025/02/10/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-14-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6-%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-range/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2025/02/10/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-13-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6-%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-for/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2025/02/10/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-11-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6-%20%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5-switch/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2025/02/10/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-12-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6-%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5-%20select/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2025/02/10/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-10-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6-%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5-if/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2025/02/10/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-09-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E7%BB%93%E6%9E%84%E4%BD%93%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2025/02/10/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-08-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-Map%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2025/02/10/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-07-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E6%8C%87%E9%92%88%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>切片</title>
+    <url>/2025/02/01/%E5%88%87%E7%89%87%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<h2 id="认识切片"><a href="#认识切片" class="headerlink" title="认识切片"></a>认识切片</h2><p>首先要知道，切片不是长度可变的数组，切片本质上是对数组的一个引用，但其大小是动态变化的，不像数组那样固定，切片在golang也是属于引用数据类型。切片的底层实现如图所示：</p>
+<p><img src="/../images/202502101132.png" alt="202502101132"></p>
+<p>切片的结构体主要包含三个部分：</p>
+<ul>
+<li>指向底层数组的指针：指向切片所引用的底层数组的内存地址。</li>
+<li>切片的长度（len）：切片中包含的元素个数。</li>
+<li>切片的容量（cap）：切片所能容纳的元素个数（即从切片的开始位置到底层数组的末尾的元素个数）。</li>
+</ul>
+<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a><strong>快速上手</strong></h2><p>下面我们来介绍几种切片的创建方式</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//	方法一，变量声明初始化</span></span><br><span class="line">	<span class="keyword">var</span> slice1 []<span class="type">int</span></span><br><span class="line">	slice1 = []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;</span><br><span class="line">	fmt.Printf(<span class="string">&quot;方式一，变量声明初始化方式：slice1: %v\n&quot;</span>, slice1)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//	方法二，短变量声明初始化</span></span><br><span class="line">	slice2 := []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line">	fmt.Printf(<span class="string">&quot;方法二，短变量声明初始化：slice2: %v\n&quot;</span>, slice2)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//	方法三，使用make创建</span></span><br><span class="line">	slice3 := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;方法三，使用make创建：slice3: %v\n&quot;</span>, slice3)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//	方法四，从数组中切割创建</span></span><br><span class="line">	arr := [<span class="number">5</span>]<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line">	slice4 := arr[<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line">	fmt.Printf(<span class="string">&quot;方法四，从数组中切割创建：slice4: %v\n&quot;</span>, slice4)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="make创建切片详解"><a href="#make创建切片详解" class="headerlink" title="make创建切片详解"></a><strong>make创建切片详解</strong></h2><p>用make创建切片的时候，需要在make传递几个参数</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">slice := <span class="built_in">make</span>(数据类型,切片长度,切片容量)</span><br></pre></td></tr></table></figure>
+
+<p>其中数据类型和切片长度是在make创建的时候必须填写的，切片容量非必填，如果不填写切片容量时会默认切片容量和切片长度相等。</p>
+<h2 id="切割创建切片详解"><a href="#切割创建切片详解" class="headerlink" title="切割创建切片详解"></a><strong>切割创建切片详解</strong></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">arr := [5]int&#123;1, 2, 3, 4, 5&#125;</span><br><span class="line">slice4 := arr[1:3]</span><br></pre></td></tr></table></figure>
+
+<p>上面代码中，我直接从数组 arr 中将下表在1和3之间的元素都复制了一份到切片slice4了，其中是不包含下标1和3的，如果想复制全部元素可以不填写下标，如：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">arr := [5]int&#123;1, 2, 3, 4, 5&#125;</span><br><span class="line">slice4 := arr[:]</span><br></pre></td></tr></table></figure>
+
+<p> 这样就可以复制整个数组元素，如果只想复制下标1之后的元素，可以这么写</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">arr := [5]int&#123;1, 2, 3, 4, 5&#125;</span><br><span class="line">slice4 := arr[1:]</span><br></pre></td></tr></table></figure>
+
+<h2 id="切片的常见使用和相关问题"><a href="#切片的常见使用和相关问题" class="headerlink" title="切片的常见使用和相关问题"></a><strong>切片的常见使用和相关问题</strong></h2><h3 id="遍历切片"><a href="#遍历切片" class="headerlink" title="遍历切片"></a><strong>遍历切片</strong></h3><h4 id="for循环遍历方式"><a href="#for循环遍历方式" class="headerlink" title="for循环遍历方式"></a>for循环遍历方式</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">	sliceInt := []int&#123;1, 2, 3, 4, 5, 6, 7&#125;</span><br><span class="line"></span><br><span class="line">	for i := 0; i &lt; len(sliceInt); i++ &#123;</span><br><span class="line">		fmt.Printf(&quot;sliceInt[i]: %v\n&quot;, sliceInt[i])</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 运行结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sliceInt[i]: 1</span><br><span class="line">sliceInt[i]: 2</span><br><span class="line">sliceInt[i]: 3</span><br><span class="line">sliceInt[i]: 4</span><br><span class="line">sliceInt[i]: 5</span><br><span class="line">sliceInt[i]: 6</span><br><span class="line">sliceInt[i]: 7</span><br></pre></td></tr></table></figure>
+
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4><h4 id="range遍历方式"><a href="#range遍历方式" class="headerlink" title="range遍历方式"></a>range遍历方式</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">	sliceInt := []int&#123;1, 2, 3&#125;</span><br><span class="line"></span><br><span class="line">	for index, value := range sliceInt &#123;</span><br><span class="line">		fmt.Printf(&quot;index: %v,value: %v\n&quot;, index, value)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 运行结果如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">index: 0,value: 1</span><br><span class="line">index: 1,value: 2</span><br><span class="line">index: 2,value: 3</span><br></pre></td></tr></table></figure>
+
+<h3 id="分割切片"><a href="#分割切片" class="headerlink" title="分割切片"></a><strong>分割切片</strong></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">	sliceInt := []int&#123;1, 2, 3, 4, 5, 6, 7&#125;</span><br><span class="line"></span><br><span class="line">	//	分割后赋值给newSlice</span><br><span class="line">	newSlice := sliceInt[1:4]</span><br><span class="line">	fmt.Printf(&quot;newSlice: %v\n&quot;, newSlice)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="复制切片元素"><a href="#复制切片元素" class="headerlink" title="复制切片元素"></a><strong>复制切片元素</strong></h3><p>在 Go 语言中，复制切片可以使用 copy 内建函数。copy 函数的基本语法是：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">copy(新切片, 原始切片)</span><br></pre></td></tr></table></figure>
+
+<p> 参考代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">	sliceInt := []int&#123;1, 2, 3, 4, 5, 6, 7&#125;</span><br><span class="line"></span><br><span class="line">	newSlice := make([]int, len(sliceInt))</span><br><span class="line">	copy(newSlice, sliceInt)</span><br><span class="line">	fmt.Printf(&quot;newSlice: %v\n&quot;, newSlice)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>运行结果如下：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">[Running] <span class="keyword">go</span> run <span class="string">&quot;/Users/jie/space/demo-go/main.go&quot;</span></span><br><span class="line">your_money: </span><br><span class="line"></span><br><span class="line">[Done] exited with code=<span class="number">0</span> in <span class="number">0.577</span> seconds</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">newSlice: [1 2 3 4 5 6 7]</span><br></pre></td></tr></table></figure>
 
-<h2 id="变量的声明和初始化"><a href="#变量的声明和初始化" class="headerlink" title="变量的声明和初始化"></a>变量的声明和初始化</h2><h3 id="变量的声明语法"><a href="#变量的声明语法" class="headerlink" title="变量的声明语法"></a>变量的声明语法</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> 变量名 变量类型</span><br></pre></td></tr></table></figure>
+<p> 使用内置函数copy的时候，需要注意确保目标切片的长度和容量都足够，这样才能进行元素的复制。也可以使用另外一种内置函数来进行复制，如下面代码所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">	sliceInt := []int&#123;1, 2, 3, 4, 5, 6, 7&#125;</span><br><span class="line"></span><br><span class="line">	newSlice := []int&#123;&#125;</span><br><span class="line">	newSlice = append(newSlice, sliceInt...)</span><br><span class="line">	fmt.Printf(&quot;newSlice: %v\n&quot;, newSlice)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>变量声明以关键字<code>var</code>开头，变量类型放在变量的后面，行尾无需分号。 举个例子：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name <span class="type">string</span></span><br><span class="line"><span class="keyword">var</span> age <span class="type">int</span></span><br><span class="line"><span class="keyword">var</span> isOk <span class="type">bool</span></span><br></pre></td></tr></table></figure>
+<p> 使用内置函数append的时候就不需要顾及切片的长度和容量了，因为append是在切片的尾部追加元素，它会自动触发切片的扩容机制。</p>
+<h3 id="切片的扩容机制"><a href="#切片的扩容机制" class="headerlink" title="切片的扩容机制"></a><strong>切片的扩容机制</strong></h3><p>切片的扩容策略：</p>
+<p>切片通常是翻倍来进行扩容的</p>
+<p>当切片的容量小于1024的时候，通常是翻倍扩容切片的容量</p>
+<p>当切片的容量大于1024的时候，扩容的增量会变小，有可能是增加容量大25%</p>
+<p>扩容时，go会创建一个新的底层数组，将原数组的元素复制到新数组中，这样会有一定到性能开销，如果数据量过大或者频繁的扩容可能会影响性能。</p>
+<h3 id="修改、删除切片元素"><a href="#修改、删除切片元素" class="headerlink" title="修改、删除切片元素"></a><strong>修改、删除切片元素</strong></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">	sliceInt := []int&#123;1, 2, 3, 4, 5, 6, 7&#125;</span><br><span class="line">	fmt.Printf(&quot;原始切片: %v\n&quot;, sliceInt)</span><br><span class="line"></span><br><span class="line">	//	改变下标为0的元素</span><br><span class="line">	sliceInt[0] = 9</span><br><span class="line">	fmt.Printf(&quot;改变下标之后: %v\n&quot;, sliceInt)</span><br><span class="line"></span><br><span class="line">	//	删除下标为index的元素</span><br><span class="line">	index := 1</span><br><span class="line">	sliceInt = append(sliceInt[:index], sliceInt[index+1:]...)</span><br><span class="line">	fmt.Printf(&quot;删除后: %v\n&quot;, sliceInt)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>变量还可以批量声明</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> (</span><br><span class="line">	a <span class="type">string</span></span><br><span class="line">	b <span class="type">int</span></span><br><span class="line">	c <span class="type">bool</span></span><br><span class="line">	d <span class="type">float32</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<h3 id="变量的初始化"><a href="#变量的初始化" class="headerlink" title="变量的初始化"></a>变量的初始化</h3><p>Go语言在声明变量的时候，会自动对变量对应的内存区域进行初始化操作。每个变量会被初始化成其类型的默认值，例如： 整型和浮点型变量的默认值为0。 字符串变量的默认值为空字符串。 布尔型变量默认为<code>false</code>。 切片、函数、指针变量的默认为<code>nil</code>。</p>
-<p>变量初始化的标准格式如下：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> 变量名 类型 = 表达式</span><br></pre></td></tr></table></figure>
-
-<p>简单使用</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 定义一个名称为 your_money 的变量，类型为 int，值为 1000</span></span><br><span class="line">	<span class="keyword">var</span> your_money = <span class="number">1000</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;your_money: %v\n&quot;</span>, your_money)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果如下：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">[Running] <span class="keyword">go</span> run <span class="string">&quot;/Users/jie/space/demo-go/main.go&quot;</span></span><br><span class="line">your_money: <span class="number">1000</span></span><br><span class="line"></span><br><span class="line">[Done] exited with code=<span class="number">0</span> in <span class="number">0.579</span> seconds</span><br></pre></td></tr></table></figure>
-
-<p>也可以同时一次声明并且初始化多个变量，下面是示例：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> your_name <span class="type">string</span></span><br><span class="line">	<span class="keyword">var</span> your_money <span class="type">int</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 同时初始化多个变量</span></span><br><span class="line">	your_name, your_money = <span class="string">&quot;zhangsan&quot;</span>, <span class="number">1000</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;your_name: %v\n&quot;</span>, your_name)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;your_money: %v\n&quot;</span>, your_money)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="变量的类型推导"><a href="#变量的类型推导" class="headerlink" title="变量的类型推导"></a>变量的类型推导</h2><p>有时候我们会将变量的类型省略，这个时候编译器会根据等号右边的值来推导变量的类型完成初始化。</p>
-<p>简单使用下，代码如下：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> your_name = <span class="string">&quot;John&quot;</span></span><br><span class="line">	<span class="keyword">var</span> your_money = <span class="number">1000</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;your_name: %v\n&quot;</span>, your_name)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;your_money: %v\n&quot;</span>, your_money)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="短变量声明（重要！！！）"><a href="#短变量声明（重要！！！）" class="headerlink" title="短变量声明（重要！！！）"></a>短变量声明（重要！！！）</h2><p>在函数内部，可以使用更简略的 :&#x3D; 方式声明并初始化变量。这个是我们在日常开发中经常使用的一个技巧，下面看示例代码：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	your_name := <span class="string">&quot;John&quot;</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;your_name: %v\n&quot;</span>, your_name)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="匿名变量"><a href="#匿名变量" class="headerlink" title="匿名变量"></a>匿名变量</h2><p>在go中声明了变量就需要去使用它，否则就会提示报错，在有些场景下得到了多个变量，但是我们不需要全部都要用，这里我们就需要使用匿名变量来忽略它，匿名变量用一个下划线_表示，例如：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数返回多个值，一个是int类型，一个是string类型</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">foo</span><span class="params">()</span></span> (<span class="type">int</span>, <span class="type">string</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">10</span>, <span class="string">&quot;Q1mi&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 这里只取了返回值的第一个，第二个用匿名变量接收</span></span><br><span class="line">	x, _ := foo()</span><br><span class="line">	fmt.Println(<span class="string">&quot;x=&quot;</span>, x)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h3 id="1-函数外的每个语句都必须以关键字开始（var、const、func等）"><a href="#1-函数外的每个语句都必须以关键字开始（var、const、func等）" class="headerlink" title="1.  函数外的每个语句都必须以关键字开始（var、const、func等）"></a>1.  函数外的每个语句都必须以关键字开始（var、const、func等）</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> yourName <span class="type">string</span> = <span class="string">&quot;John Doe&quot;</span></span><br><span class="line"><span class="keyword">var</span> yourMoney <span class="type">int</span> = <span class="number">1000</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Printf(<span class="string">&quot;yourName: %v\n&quot;</span>, yourName)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;yourMoney: %v\n&quot;</span>, yourMoney)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="2-不能使用在函数外。"><a href="#2-不能使用在函数外。" class="headerlink" title="2.  :&#x3D;不能使用在函数外。"></a>2.  :&#x3D;不能使用在函数外。</h3><p><img src="/../images/202502102015.png" alt="202502102015"></p>
-<h3 id="3-多用于占位，表示忽略值。"><a href="#3-多用于占位，表示忽略值。" class="headerlink" title="3.  _多用于占位，表示忽略值。"></a>3.  _多用于占位，表示忽略值。</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数返回多个值，一个是int类型，一个是string类型</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">foo</span><span class="params">()</span></span> (<span class="type">int</span>, <span class="type">string</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">10</span>, <span class="string">&quot;Q1mi&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 这里只取了返回值的第一个，第二个用匿名变量接收</span></span><br><span class="line">	x, _ := foo()</span><br><span class="line">	fmt.Println(<span class="string">&quot;x=&quot;</span>, x)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h1><p>常量就是一般所说的一成不变的量，也就是说1块钱就是一块钱，不会变成1.5块钱或者0.5元</p>
-<h2 id="常量的简单使用"><a href="#常量的简单使用" class="headerlink" title="常量的简单使用"></a>常量的简单使用</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//定义了名为money的常量</span></span><br><span class="line">	<span class="keyword">const</span> money = <span class="number">1</span></span><br><span class="line">	<span class="comment">//打印输出</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;money: %v\n&quot;</span>, money)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果如下：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">[Running] <span class="keyword">go</span> run <span class="string">&quot;/Users/jie/space/demo-go/main.go&quot;</span></span><br><span class="line">money: <span class="number">1</span></span><br><span class="line"></span><br><span class="line">[Done] exited with code=<span class="number">0</span> in <span class="number">0.78</span> seconds</span><br></pre></td></tr></table></figure>
-
-<h2 id="常量的声明"><a href="#常量的声明" class="headerlink" title="常量的声明"></a>常量的声明</h2><p>常量使用const关键字来进行定义，语法格式如下：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> 常量名称 = 初始值</span><br></pre></td></tr></table></figure>
-
-<p>这里“常量名称”是需要自己来定的，而且每个常量在声明的时候必须给定初始值，如果不给定初始值就会提示报错，如图所示：</p>
-<p><img src="/../images/202502101928.png" alt="202502101928"></p>
-<p>const关键字还可以同时定义多个常量，这里可以简单展示一下：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//定义了名为名为broA和broB的两个常量</span></span><br><span class="line">	<span class="keyword">const</span> (</span><br><span class="line">		broA = <span class="string">&quot;盖伦&quot;</span></span><br><span class="line">		broB = <span class="string">&quot;德莱厄斯&quot;</span></span><br><span class="line">	)</span><br><span class="line">	<span class="comment">//打印输出</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;broA: %v\n&quot;</span>, broA)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;broB: %v\n&quot;</span>, broB)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>运行结果如下：</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">[Running] <span class="keyword">go</span> run <span class="string">&quot;/Users/jie/space/demo-go/main.go&quot;</span></span><br><span class="line">broA: 盖伦</span><br><span class="line">broB: 德莱厄斯</span><br><span class="line"></span><br><span class="line">[Done] exited with code=<span class="number">0</span> in <span class="number">0.635</span> seconds</span><br></pre></td></tr></table></figure>
-
-<h2 id="注意事项-1"><a href="#注意事项-1" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
-<li>常量在声明之后，它的值是不可能改变的。</li>
-<li>常量在声明时，必须给定初始值。</li>
-</ol>
+<h3 id="向切片尾部增加元素"><a href="#向切片尾部增加元素" class="headerlink" title="向切片尾部增加元素"></a><strong>向切片尾部增加元素</strong></h3><p>使用append即可</p>
 ]]></content>
       <categories>
         <category>golang基础教程</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>05-字符串详解</title>
+    <url>/2025/01/01/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-05-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<p><a href="https://blog.csdn.net/weixin_69163469/article/details/140748962?ops_request_misc=&request_id=&biz_id=102&utm_term=golang%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-3-140748962.142%5Ev101%5Epc_search_result_base2&spm=1018.2226.3001.4187">参考文献csdn</a></p>
+<h1 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h1><h1 id="字符串的底层原理"><a href="#字符串的底层原理" class="headerlink" title="字符串的底层原理"></a>字符串的底层原理</h1><p>在 go 语言中，字符串实际上是一个<strong>只读</strong>的<strong>字节切片</strong>。只读表示它是不可变的</p>
+<p>string类型的本质也是一个结构体</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> stringStruct <span class="keyword">struct</span> &#123;</span><br><span class="line">	str unsafe.Pointer</span><br><span class="line">	<span class="built_in">len</span> <span class="type">int</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>str指向字符串的首地址</p>
+<p>len表示字符串的长度，<code>len</code>存储实际的字节数，而非字符数。所以对于非单字节编码的字符）</p>
+<p>问题</p>
+<p>string和[]byte转换会发生内存拷贝吗？</p>
+]]></content>
+      <categories>
+        <category>golang基础教程</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>持久化</title>
+    <url>/2025/01/01/redis%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96/</url>
+    <content><![CDATA[<p>rdb和aof<br>rdb是默认的持久化策略</p>
+]]></content>
+      <categories>
+        <category>Redis教程</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>redis的数据类型</title>
+    <url>/2025/01/01/redis%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
+    <content><![CDATA[<p>redis有五种基本数据结构类型</p>
+<ul>
+<li>String（字符串）</li>
+<li>Hash（哈希）</li>
+<li>List（列表）</li>
+<li>Set（集合）</li>
+<li>Zset（有序集合）</li>
+</ul>
+<p><img src="/../images/4d38bdffb75f0819b4539629659b9d10.jpeg" alt="img"></p>
+<p>还有三种特殊的数据结构类型</p>
+<ul>
+<li>Geospatial</li>
+<li>Hyperloglog</li>
+<li>Bitmap</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Redis教程</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>redis的简单使用</title>
+    <url>/2025/01/01/redis%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<p>进入redis-cli应用</p>
+<p>插入一条redis数据</p>
+<p>查询单条数据</p>
+<p>查询全部数据</p>
+<p>插入一条数据，并且设置过期时间</p>
+]]></content>
+      <categories>
+        <category>Redis教程</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>mysql的索引</title>
+    <url>/2025/01/01/mysql%E7%9A%84%E7%B4%A2%E5%BC%95/</url>
+    <content><![CDATA[<p>什么是索引</p>
+<p>mysql的索引类似于书的目录，有这些目录就可以很快速的找到你需要查询的数据</p>
+<p>有哪些索引</p>
+<p>主键索引、普通索引、唯一索引、全文索引等</p>
+<p>索引的底层数据结构</p>
+<p>B+树</p>
+<p>如何查看自己的sql有没有命中索引</p>
+<p>使用EXPLAIN</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">EXPLAIN SELECT * FROM your_table WHERE your_column = &#x27;value&#x27;;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>MySQL教程</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>mysql的B+树详解</title>
+    <url>/2025/01/01/mysql%E7%9A%84B+%E6%95%B0%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<p>要想详细了解B+数就需要从它的演变史来看</p>
+<p>B树-&gt;B+树</p>
+<p><img src="/../images/549c9155dc00dff9689535e36e1d2923.png" alt="在这里插入图片描述"></p>
+<p><img src="/../images/9e6b1e9bcf14596a6544a63c8e38b7cb.png" alt="在这里插入图片描述"></p>
+<p>1.节点存储数据的方式不同</p>
+<p>B树的叶子结点和非叶子节点都会存储数据，指针和数据共同保存在同一节点中<br>B+树数据均保存在叶子节点，非叶子节点只存储索引信息。<br>2.查找数据过程不同</p>
+<p>B树需要在各个节点上进行查找，查找数据的效率不稳定<br>B+树需要在叶子节点上查找，非叶子节点只用于索引定位，每次查找都会从父节点到叶子节点结束<br>3.空间利用率不同</p>
+<p>B树每个节点都存储数据，空间利用率相对较低<br>B+树只有叶子节点存储数据，非叶子节点只存储索引信息，空间利用率更高<br>4.结构稳定性不同</p>
+<p>B树插入和删除数据需要频繁变更树的结构，结构不稳定<br>B+树插入和删除数据操作均放在叶子节点，维护了树结构的稳定性<br>5.范围查找性能不同</p>
+<ul>
+<li>B树需要在各个节点上逐个查找,范围查找效率较低。</li>
+<li>B+树所有数据记录都存储在叶子节点上,且叶子节点同时还维护了一条双向链表，提高范围查询的效率</li>
+</ul>
+<p><strong>6.适用场景不同</strong></p>
+<ul>
+<li>B树更适合于数据库的索引结构,处理大量点查询。</li>
+<li>B+树更适合文件系统等场景,处理大量范围查询和排序操作。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>MySQL教程</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>mysql的索引失效的场景</title>
+    <url>/2025/01/01/mysql%E7%9A%84%E7%B4%A2%E5%BC%95%E5%A4%B1%E6%95%88%E7%9A%84%E5%9C%BA%E6%99%AF/</url>
+    <content><![CDATA[<p>1.在查询条件中使用函数或者表达式导致索引失效</p>
+<p>2.在查询条件中计算导致索引失效</p>
+<p>隐式类型转换导致索引失效，当查询的数据条件和所在列的类型不匹配的时候就会导致索引失效</p>
+<p>or导致索引失效，or两边的条件只要有一个没有索引就会导致索引失效 </p>
+<p>like模糊查询，使用like进行模糊查询的时候通配符在开头 LIKE ‘%Alice’;</p>
+<p>复合索引没有满足最左匹配原则导致索引失效</p>
+<p>IS NULL或IS NOT NULL导致失效</p>
+<p>使用NOT或!&#x3D;</p>
+]]></content>
+      <categories>
+        <category>MySQL教程</category>
       </categories>
   </entry>
   <entry>
@@ -495,128 +500,274 @@
       </categories>
   </entry>
   <entry>
-    <title>05-字符串详解</title>
-    <url>/2025/01/01/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-05-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/weixin_69163469/article/details/140748962?ops_request_misc=&request_id=&biz_id=102&utm_term=golang%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-3-140748962.142%5Ev101%5Epc_search_result_base2&spm=1018.2226.3001.4187">参考文献csdn</a></p>
-<h1 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h1><h1 id="字符串的底层原理"><a href="#字符串的底层原理" class="headerlink" title="字符串的底层原理"></a>字符串的底层原理</h1><p>在 go 语言中，字符串实际上是一个<strong>只读</strong>的<strong>字节切片</strong>。只读表示它是不可变的</p>
-<p>string类型的本质也是一个结构体</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> stringStruct <span class="keyword">struct</span> &#123;</span><br><span class="line">	str unsafe.Pointer</span><br><span class="line">	<span class="built_in">len</span> <span class="type">int</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>str指向字符串的首地址</p>
-<p>len表示字符串的长度，<code>len</code>存储实际的字节数，而非字符数。所以对于非单字节编码的字符）</p>
-<p>问题</p>
-<p>string和[]byte转换会发生内存拷贝吗？</p>
+    <title>03-数据类型</title>
+    <url>/2025/01/01/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-03-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
+    <content><![CDATA[<p>学习go这门后端编程语言，其中很大一部分时间我们是在和数据打交道，如何拿到数据，创建数据和处理数据就是我们的日常工作内容。在前面章节中，我们已经接触了int类型和string类型，在本章节中，我们来了解一下Go语言中的数据类型，后面会对这些数据类型进行精细的讲解</p>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p>Go 语言按类别有以下几种数据类型：布尔型、数字类型、字符串类型、派生类型</p>
+<h2 id="布尔型"><a href="#布尔型" class="headerlink" title="布尔型"></a>布尔型</h2><p>布尔型的值只可以是常量 true 或者 false。一个简单的例子：var b bool &#x3D; true。</p>
+<h2 id="数字类型"><a href="#数字类型" class="headerlink" title="数字类型"></a>数字类型</h2><p>数字类型又分为整型和浮点类型，整型也就是如1这样的数字，浮点型类似于3.1415927这样的带小数的</p>
+<p>下表可参考go中的常见数字类型</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>类别</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int</td>
+<td>其他数字类型</td>
+<td>32 或 64 位</td>
+</tr>
+<tr>
+<td>uint</td>
+<td>其他数字类型</td>
+<td>32 或 64 位</td>
+</tr>
+<tr>
+<td>uint8</td>
+<td>整型</td>
+<td>无符号 8 位整型 (0 到 255)</td>
+</tr>
+<tr>
+<td>uint16</td>
+<td>整型</td>
+<td>无符号 16 位整型 (0 到 65535)</td>
+</tr>
+<tr>
+<td>uint32</td>
+<td>整型</td>
+<td>无符号 32 位整型 (0 到 4294967295)</td>
+</tr>
+<tr>
+<td>uint64</td>
+<td>整型</td>
+<td>无符号 64 位整型 (0 到 18446744073709551615)</td>
+</tr>
+<tr>
+<td>int8</td>
+<td>整型</td>
+<td>有符号 8 位整型 (-128 到 127)</td>
+</tr>
+<tr>
+<td>int16</td>
+<td>整型</td>
+<td>有符号 16 位整型 (-32768 到 32767)</td>
+</tr>
+<tr>
+<td>int32</td>
+<td>整型</td>
+<td>有符号 32 位整型 (-2147483648 到 2147483647)</td>
+</tr>
+<tr>
+<td>int64</td>
+<td>整型</td>
+<td>有符号 64 位整型 (-9223372036854775808 到 9223372036854775807)</td>
+</tr>
+<tr>
+<td>float32</td>
+<td>浮点型</td>
+<td>IEEE-754 32位浮点型数</td>
+</tr>
+<tr>
+<td>float64</td>
+<td>浮点型</td>
+<td>IEEE-754 64位浮点型数</td>
+</tr>
+<tr>
+<td>complex64</td>
+<td>浮点型</td>
+<td>32 位实数和虚数</td>
+</tr>
+<tr>
+<td>complex128</td>
+<td>浮点型</td>
+<td>64 位实数和虚数</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>其他数字类型</td>
+<td>类似 uint8</td>
+</tr>
+<tr>
+<td>rune</td>
+<td>其他数字类型</td>
+<td>类似 int32</td>
+</tr>
+<tr>
+<td>uintptr</td>
+<td>其他数字类型</td>
+<td>无符号整型，用于存放一个指针</td>
+</tr>
+</tbody></table>
+<h2 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h2><p>字符串就是一串固定长度的字符连接起来的字符序列。Go 的字符串是由单个字节连接起来的。Go 语言的字符串的字节使用 UTF-8 编码标识 Unicode 文本。</p>
+<h2 id="派生类型"><a href="#派生类型" class="headerlink" title="派生类型"></a>派生类型</h2><ul>
+<li>(a) 指针类型（Pointer）</li>
+<li>(b) 数组类型</li>
+<li>(c) 结构化类型(struct)</li>
+<li>(d) Channel 类型</li>
+<li>(e) 函数类型</li>
+<li>(f) 切片类型</li>
+<li>(g) 接口类型（interface）</li>
+<li>(h) Map 类型</li>
+</ul>
 ]]></content>
       <categories>
         <category>golang基础教程</category>
       </categories>
   </entry>
   <entry>
-    <title>切片</title>
-    <url>/2025/02/01/%E5%88%87%E7%89%87%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<h2 id="认识切片"><a href="#认识切片" class="headerlink" title="认识切片"></a>认识切片</h2><p>首先要知道，切片不是长度可变的数组，切片本质上是对数组的一个引用，但其大小是动态变化的，不像数组那样固定，切片在golang也是属于引用数据类型。切片的底层实现如图所示：</p>
-<p><img src="/../images/202502101132.png" alt="202502101132"></p>
-<p>切片的结构体主要包含三个部分：</p>
-<ul>
-<li>指向底层数组的指针：指向切片所引用的底层数组的内存地址。</li>
-<li>切片的长度（len）：切片中包含的元素个数。</li>
-<li>切片的容量（cap）：切片所能容纳的元素个数（即从切片的开始位置到底层数组的末尾的元素个数）。</li>
-</ul>
-<h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a><strong>快速上手</strong></h2><p>下面我们来介绍几种切片的创建方式</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//	方法一，变量声明初始化</span></span><br><span class="line">	<span class="keyword">var</span> slice1 []<span class="type">int</span></span><br><span class="line">	slice1 = []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;</span><br><span class="line">	fmt.Printf(<span class="string">&quot;方式一，变量声明初始化方式：slice1: %v\n&quot;</span>, slice1)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//	方法二，短变量声明初始化</span></span><br><span class="line">	slice2 := []<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line">	fmt.Printf(<span class="string">&quot;方法二，短变量声明初始化：slice2: %v\n&quot;</span>, slice2)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//	方法三，使用make创建</span></span><br><span class="line">	slice3 := <span class="built_in">make</span>([]<span class="type">int</span>, <span class="number">1</span>, <span class="number">1</span>)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;方法三，使用make创建：slice3: %v\n&quot;</span>, slice3)</span><br><span class="line"></span><br><span class="line">	<span class="comment">//	方法四，从数组中切割创建</span></span><br><span class="line">	arr := [<span class="number">5</span>]<span class="type">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line">	slice4 := arr[<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line">	fmt.Printf(<span class="string">&quot;方法四，从数组中切割创建：slice4: %v\n&quot;</span>, slice4)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="make创建切片详解"><a href="#make创建切片详解" class="headerlink" title="make创建切片详解"></a><strong>make创建切片详解</strong></h2><p>用make创建切片的时候，需要在make传递几个参数</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">slice := <span class="built_in">make</span>(数据类型,切片长度,切片容量)</span><br></pre></td></tr></table></figure>
-
-<p>其中数据类型和切片长度是在make创建的时候必须填写的，切片容量非必填，如果不填写切片容量时会默认切片容量和切片长度相等。</p>
-<h2 id="切割创建切片详解"><a href="#切割创建切片详解" class="headerlink" title="切割创建切片详解"></a><strong>切割创建切片详解</strong></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">arr := [5]int&#123;1, 2, 3, 4, 5&#125;</span><br><span class="line">slice4 := arr[1:3]</span><br></pre></td></tr></table></figure>
-
-<p>上面代码中，我直接从数组 arr 中将下表在1和3之间的元素都复制了一份到切片slice4了，其中是不包含下标1和3的，如果想复制全部元素可以不填写下标，如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">arr := [5]int&#123;1, 2, 3, 4, 5&#125;</span><br><span class="line">slice4 := arr[:]</span><br></pre></td></tr></table></figure>
-
-<p> 这样就可以复制整个数组元素，如果只想复制下标1之后的元素，可以这么写</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">arr := [5]int&#123;1, 2, 3, 4, 5&#125;</span><br><span class="line">slice4 := arr[1:]</span><br></pre></td></tr></table></figure>
-
-<h2 id="切片的常见使用和相关问题"><a href="#切片的常见使用和相关问题" class="headerlink" title="切片的常见使用和相关问题"></a><strong>切片的常见使用和相关问题</strong></h2><h3 id="遍历切片"><a href="#遍历切片" class="headerlink" title="遍历切片"></a><strong>遍历切片</strong></h3><h4 id="for循环遍历方式"><a href="#for循环遍历方式" class="headerlink" title="for循环遍历方式"></a>for循环遍历方式</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">	sliceInt := []int&#123;1, 2, 3, 4, 5, 6, 7&#125;</span><br><span class="line"></span><br><span class="line">	for i := 0; i &lt; len(sliceInt); i++ &#123;</span><br><span class="line">		fmt.Printf(&quot;sliceInt[i]: %v\n&quot;, sliceInt[i])</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p> 运行结果如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sliceInt[i]: 1</span><br><span class="line">sliceInt[i]: 2</span><br><span class="line">sliceInt[i]: 3</span><br><span class="line">sliceInt[i]: 4</span><br><span class="line">sliceInt[i]: 5</span><br><span class="line">sliceInt[i]: 6</span><br><span class="line">sliceInt[i]: 7</span><br></pre></td></tr></table></figure>
-
-<h4 id=""><a href="#" class="headerlink" title=""></a></h4><h4 id="range遍历方式"><a href="#range遍历方式" class="headerlink" title="range遍历方式"></a>range遍历方式</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">	sliceInt := []int&#123;1, 2, 3&#125;</span><br><span class="line"></span><br><span class="line">	for index, value := range sliceInt &#123;</span><br><span class="line">		fmt.Printf(&quot;index: %v,value: %v\n&quot;, index, value)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p> 运行结果如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">index: 0,value: 1</span><br><span class="line">index: 1,value: 2</span><br><span class="line">index: 2,value: 3</span><br></pre></td></tr></table></figure>
-
-<h3 id="分割切片"><a href="#分割切片" class="headerlink" title="分割切片"></a><strong>分割切片</strong></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">	sliceInt := []int&#123;1, 2, 3, 4, 5, 6, 7&#125;</span><br><span class="line"></span><br><span class="line">	//	分割后赋值给newSlice</span><br><span class="line">	newSlice := sliceInt[1:4]</span><br><span class="line">	fmt.Printf(&quot;newSlice: %v\n&quot;, newSlice)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="复制切片元素"><a href="#复制切片元素" class="headerlink" title="复制切片元素"></a><strong>复制切片元素</strong></h3><p>在 Go 语言中，复制切片可以使用 copy 内建函数。copy 函数的基本语法是：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">copy(新切片, 原始切片)</span><br></pre></td></tr></table></figure>
-
-<p> 参考代码如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">	sliceInt := []int&#123;1, 2, 3, 4, 5, 6, 7&#125;</span><br><span class="line"></span><br><span class="line">	newSlice := make([]int, len(sliceInt))</span><br><span class="line">	copy(newSlice, sliceInt)</span><br><span class="line">	fmt.Printf(&quot;newSlice: %v\n&quot;, newSlice)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>02-变量和常量</title>
+    <url>/2025/01/01/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-02-%E5%8F%98%E9%87%8F%E5%92%8C%E5%B8%B8%E9%87%8F/</url>
+    <content><![CDATA[<h1 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h1><p>变量就是声明后还会改变的量，比如你水杯里面的水或者你的钱包里面的钱就是变量，他们会随着你的使用情况来进行变化，再比如你的年龄也是变量，你的年龄会逐年累加。</p>
+<h2 id="变量的简单使用"><a href="#变量的简单使用" class="headerlink" title="变量的简单使用"></a>变量的简单使用</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> your_money <span class="type">string</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;your_money: %v\n&quot;</span>, your_money)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>运行结果如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">newSlice: [1 2 3 4 5 6 7]</span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">[Running] <span class="keyword">go</span> run <span class="string">&quot;/Users/jie/space/demo-go/main.go&quot;</span></span><br><span class="line">your_money: </span><br><span class="line"></span><br><span class="line">[Done] exited with code=<span class="number">0</span> in <span class="number">0.577</span> seconds</span><br></pre></td></tr></table></figure>
 
-<p> 使用内置函数copy的时候，需要注意确保目标切片的长度和容量都足够，这样才能进行元素的复制。也可以使用另外一种内置函数来进行复制，如下面代码所示：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">	sliceInt := []int&#123;1, 2, 3, 4, 5, 6, 7&#125;</span><br><span class="line"></span><br><span class="line">	newSlice := []int&#123;&#125;</span><br><span class="line">	newSlice = append(newSlice, sliceInt...)</span><br><span class="line">	fmt.Printf(&quot;newSlice: %v\n&quot;, newSlice)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="变量的声明和初始化"><a href="#变量的声明和初始化" class="headerlink" title="变量的声明和初始化"></a>变量的声明和初始化</h2><h3 id="变量的声明语法"><a href="#变量的声明语法" class="headerlink" title="变量的声明语法"></a>变量的声明语法</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> 变量名 变量类型</span><br></pre></td></tr></table></figure>
 
-<p> 使用内置函数append的时候就不需要顾及切片的长度和容量了，因为append是在切片的尾部追加元素，它会自动触发切片的扩容机制。</p>
-<h3 id="切片的扩容机制"><a href="#切片的扩容机制" class="headerlink" title="切片的扩容机制"></a><strong>切片的扩容机制</strong></h3><p>切片的扩容策略：</p>
-<p>切片通常是翻倍来进行扩容的</p>
-<p>当切片的容量小于1024的时候，通常是翻倍扩容切片的容量</p>
-<p>当切片的容量大于1024的时候，扩容的增量会变小，有可能是增加容量大25%</p>
-<p>扩容时，go会创建一个新的底层数组，将原数组的元素复制到新数组中，这样会有一定到性能开销，如果数据量过大或者频繁的扩容可能会影响性能。</p>
-<h3 id="修改、删除切片元素"><a href="#修改、删除切片元素" class="headerlink" title="修改、删除切片元素"></a><strong>修改、删除切片元素</strong></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">	sliceInt := []int&#123;1, 2, 3, 4, 5, 6, 7&#125;</span><br><span class="line">	fmt.Printf(&quot;原始切片: %v\n&quot;, sliceInt)</span><br><span class="line"></span><br><span class="line">	//	改变下标为0的元素</span><br><span class="line">	sliceInt[0] = 9</span><br><span class="line">	fmt.Printf(&quot;改变下标之后: %v\n&quot;, sliceInt)</span><br><span class="line"></span><br><span class="line">	//	删除下标为index的元素</span><br><span class="line">	index := 1</span><br><span class="line">	sliceInt = append(sliceInt[:index], sliceInt[index+1:]...)</span><br><span class="line">	fmt.Printf(&quot;删除后: %v\n&quot;, sliceInt)</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>变量声明以关键字<code>var</code>开头，变量类型放在变量的后面，行尾无需分号。 举个例子：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> name <span class="type">string</span></span><br><span class="line"><span class="keyword">var</span> age <span class="type">int</span></span><br><span class="line"><span class="keyword">var</span> isOk <span class="type">bool</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="向切片尾部增加元素"><a href="#向切片尾部增加元素" class="headerlink" title="向切片尾部增加元素"></a><strong>向切片尾部增加元素</strong></h3><p>使用append即可</p>
+<p>变量还可以批量声明</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> (</span><br><span class="line">	a <span class="type">string</span></span><br><span class="line">	b <span class="type">int</span></span><br><span class="line">	c <span class="type">bool</span></span><br><span class="line">	d <span class="type">float32</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h3 id="变量的初始化"><a href="#变量的初始化" class="headerlink" title="变量的初始化"></a>变量的初始化</h3><p>Go语言在声明变量的时候，会自动对变量对应的内存区域进行初始化操作。每个变量会被初始化成其类型的默认值，例如： 整型和浮点型变量的默认值为0。 字符串变量的默认值为空字符串。 布尔型变量默认为<code>false</code>。 切片、函数、指针变量的默认为<code>nil</code>。</p>
+<p>变量初始化的标准格式如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> 变量名 类型 = 表达式</span><br></pre></td></tr></table></figure>
+
+<p>简单使用</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 定义一个名称为 your_money 的变量，类型为 int，值为 1000</span></span><br><span class="line">	<span class="keyword">var</span> your_money = <span class="number">1000</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;your_money: %v\n&quot;</span>, your_money)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">[Running] <span class="keyword">go</span> run <span class="string">&quot;/Users/jie/space/demo-go/main.go&quot;</span></span><br><span class="line">your_money: <span class="number">1000</span></span><br><span class="line"></span><br><span class="line">[Done] exited with code=<span class="number">0</span> in <span class="number">0.579</span> seconds</span><br></pre></td></tr></table></figure>
+
+<p>也可以同时一次声明并且初始化多个变量，下面是示例：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> your_name <span class="type">string</span></span><br><span class="line">	<span class="keyword">var</span> your_money <span class="type">int</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// 同时初始化多个变量</span></span><br><span class="line">	your_name, your_money = <span class="string">&quot;zhangsan&quot;</span>, <span class="number">1000</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;your_name: %v\n&quot;</span>, your_name)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;your_money: %v\n&quot;</span>, your_money)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="变量的类型推导"><a href="#变量的类型推导" class="headerlink" title="变量的类型推导"></a>变量的类型推导</h2><p>有时候我们会将变量的类型省略，这个时候编译器会根据等号右边的值来推导变量的类型完成初始化。</p>
+<p>简单使用下，代码如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">var</span> your_name = <span class="string">&quot;John&quot;</span></span><br><span class="line">	<span class="keyword">var</span> your_money = <span class="number">1000</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;your_name: %v\n&quot;</span>, your_name)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;your_money: %v\n&quot;</span>, your_money)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="短变量声明（重要！！！）"><a href="#短变量声明（重要！！！）" class="headerlink" title="短变量声明（重要！！！）"></a>短变量声明（重要！！！）</h2><p>在函数内部，可以使用更简略的 :&#x3D; 方式声明并初始化变量。这个是我们在日常开发中经常使用的一个技巧，下面看示例代码：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	your_name := <span class="string">&quot;John&quot;</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;your_name: %v\n&quot;</span>, your_name)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="匿名变量"><a href="#匿名变量" class="headerlink" title="匿名变量"></a>匿名变量</h2><p>在go中声明了变量就需要去使用它，否则就会提示报错，在有些场景下得到了多个变量，但是我们不需要全部都要用，这里我们就需要使用匿名变量来忽略它，匿名变量用一个下划线_表示，例如：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数返回多个值，一个是int类型，一个是string类型</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">foo</span><span class="params">()</span></span> (<span class="type">int</span>, <span class="type">string</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">10</span>, <span class="string">&quot;Q1mi&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 这里只取了返回值的第一个，第二个用匿名变量接收</span></span><br><span class="line">	x, _ := foo()</span><br><span class="line">	fmt.Println(<span class="string">&quot;x=&quot;</span>, x)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><h3 id="1-函数外的每个语句都必须以关键字开始（var、const、func等）"><a href="#1-函数外的每个语句都必须以关键字开始（var、const、func等）" class="headerlink" title="1.  函数外的每个语句都必须以关键字开始（var、const、func等）"></a>1.  函数外的每个语句都必须以关键字开始（var、const、func等）</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> yourName <span class="type">string</span> = <span class="string">&quot;John Doe&quot;</span></span><br><span class="line"><span class="keyword">var</span> yourMoney <span class="type">int</span> = <span class="number">1000</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Printf(<span class="string">&quot;yourName: %v\n&quot;</span>, yourName)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;yourMoney: %v\n&quot;</span>, yourMoney)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-不能使用在函数外。"><a href="#2-不能使用在函数外。" class="headerlink" title="2.  :&#x3D;不能使用在函数外。"></a>2.  :&#x3D;不能使用在函数外。</h3><p><img src="/../images/202502102015.png" alt="202502102015"></p>
+<h3 id="3-多用于占位，表示忽略值。"><a href="#3-多用于占位，表示忽略值。" class="headerlink" title="3.  _多用于占位，表示忽略值。"></a>3.  _多用于占位，表示忽略值。</h3><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数返回多个值，一个是int类型，一个是string类型</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">foo</span><span class="params">()</span></span> (<span class="type">int</span>, <span class="type">string</span>) &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">10</span>, <span class="string">&quot;Q1mi&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 这里只取了返回值的第一个，第二个用匿名变量接收</span></span><br><span class="line">	x, _ := foo()</span><br><span class="line">	fmt.Println(<span class="string">&quot;x=&quot;</span>, x)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h1><p>常量就是一般所说的一成不变的量，也就是说1块钱就是一块钱，不会变成1.5块钱或者0.5元</p>
+<h2 id="常量的简单使用"><a href="#常量的简单使用" class="headerlink" title="常量的简单使用"></a>常量的简单使用</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//定义了名为money的常量</span></span><br><span class="line">	<span class="keyword">const</span> money = <span class="number">1</span></span><br><span class="line">	<span class="comment">//打印输出</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;money: %v\n&quot;</span>, money)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">[Running] <span class="keyword">go</span> run <span class="string">&quot;/Users/jie/space/demo-go/main.go&quot;</span></span><br><span class="line">money: <span class="number">1</span></span><br><span class="line"></span><br><span class="line">[Done] exited with code=<span class="number">0</span> in <span class="number">0.78</span> seconds</span><br></pre></td></tr></table></figure>
+
+<h2 id="常量的声明"><a href="#常量的声明" class="headerlink" title="常量的声明"></a>常量的声明</h2><p>常量使用const关键字来进行定义，语法格式如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> 常量名称 = 初始值</span><br></pre></td></tr></table></figure>
+
+<p>这里“常量名称”是需要自己来定的，而且每个常量在声明的时候必须给定初始值，如果不给定初始值就会提示报错，如图所示：</p>
+<p><img src="/../images/202502101928.png" alt="202502101928"></p>
+<p>const关键字还可以同时定义多个常量，这里可以简单展示一下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">//定义了名为名为broA和broB的两个常量</span></span><br><span class="line">	<span class="keyword">const</span> (</span><br><span class="line">		broA = <span class="string">&quot;盖伦&quot;</span></span><br><span class="line">		broB = <span class="string">&quot;德莱厄斯&quot;</span></span><br><span class="line">	)</span><br><span class="line">	<span class="comment">//打印输出</span></span><br><span class="line">	fmt.Printf(<span class="string">&quot;broA: %v\n&quot;</span>, broA)</span><br><span class="line">	fmt.Printf(<span class="string">&quot;broB: %v\n&quot;</span>, broB)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">[Running] <span class="keyword">go</span> run <span class="string">&quot;/Users/jie/space/demo-go/main.go&quot;</span></span><br><span class="line">broA: 盖伦</span><br><span class="line">broB: 德莱厄斯</span><br><span class="line"></span><br><span class="line">[Done] exited with code=<span class="number">0</span> in <span class="number">0.635</span> seconds</span><br></pre></td></tr></table></figure>
+
+<h2 id="注意事项-1"><a href="#注意事项-1" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
+<li>常量在声明之后，它的值是不可能改变的。</li>
+<li>常量在声明时，必须给定初始值。</li>
+</ol>
 ]]></content>
       <categories>
         <category>golang基础教程</category>
       </categories>
   </entry>
   <entry>
-    <title></title>
-    <url>/2025/02/10/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2025/02/10/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2025/02/10/docker%E6%95%99%E7%A8%8B-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2025/02/10/mysql%E7%9A%84%E4%BA%8B%E7%89%A9/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2025/02/10/rune%E7%B1%BB%E5%9E%8B/</url>
-    <content><![CDATA[<p>rune 是 int32 的别名，在所有方面都等同于 int32 ，按照约定，它用于区分字符值和整数值。</p>
-<p>说的通俗一点就是 rune 一个值代表的就是一个 Unicode 字符，因为一个 Go 语言中字符串编码为 UTF-</p>
-<p>8 ，使用 1-4 字节就可以表示一个字符，所以使用 int32 类型范围就可以完美适配。</p>
-<p>我们常在处理中文字符串的时候用到rune类型</p>
+    <title>01-前言和helloworld</title>
+    <url>/2025/01/01/golang%E5%9F%BA%E7%A1%80%E6%95%99%E7%A8%8B-01-%E5%89%8D%E8%A8%80%E5%92%8Chelloworld/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h2 id="go语言特性"><a href="#go语言特性" class="headerlink" title="go语言特性"></a>go语言特性</h2><p>Go语言（或 Golang）是Google开发的开源编程语言，诞生于2006年1月2日下午15点4分5秒，于2009年11月开源，2012年发布go稳定版。Go语言在多核并发上拥有原生的设计优势，Go语言从底层原生支持并发，无须第三方库、开发者的编程技巧和开发经验。</p>
+<p>go是非常年轻的一门语言，它的主要目标是“兼具Python 等动态语言的开发速度和C&#x2F;C++等编译型语言的性能与安全性”</p>
+<p>很多公司，特别是中国的互联网公司，即将或者已经完成了使用 Go 语言改造旧系统的过程。经过 Go 语言重构的系统能使用更少的硬件资源获得更高的并发和I&#x2F;O吞吐表现。充分挖掘硬件设备的潜力也满足当前精细化运营的市场大环境。</p>
+<h2 id="go适合做什么"><a href="#go适合做什么" class="headerlink" title="go适合做什么"></a>go适合做什么</h2><ul>
+<li>服务端开发</li>
+<li>分布式系统，微服务</li>
+<li>网络编程</li>
+<li>区块链开发</li>
+<li>内存KV数据库，例如boltDB、levelDB</li>
+<li>云平台</li>
+</ul>
+<h2 id="目前go语言前景"><a href="#目前go语言前景" class="headerlink" title="目前go语言前景"></a>目前go语言前景</h2><p>目前Go语言已经⼴泛应用于人工智能、云计算开发、容器虚拟化、⼤数据开发、数据分析及科学计算、运维开发、爬虫开发、游戏开发等领域</p>
+<h1 id="helloworld"><a href="#helloworld" class="headerlink" title="helloworld"></a>helloworld</h1><h2 id="快速上手"><a href="#快速上手" class="headerlink" title="快速上手"></a>快速上手</h2><p>成功第一步-&gt;创建一个文件夹</p>
+<p>创建main.go</p>
+<p>编写程序</p>
+<p>运行命令</p>
 ]]></content>
+      <categories>
+        <category>golang基础教程</category>
+      </categories>
   </entry>
   <entry>
-    <title></title>
-    <url>/2025/02/10/fmt%E5%8C%85%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<p><a href="https://blog.csdn.net/weixin_43989347/article/details/134243730?ops_request_misc=&request_id=&biz_id=102&utm_term=golang%E7%9A%84%25c&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-134243730.142%5Ev101%5Epc_search_result_base2&spm=1018.2226.3001.4187">参考文档</a></p>
-<p>快速上手</p>
+    <title>并发编程</title>
+    <url>/2025/01/01/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/</url>
+    <content><![CDATA[<p>启动单个goroutine</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">go</span> hello()</span><br><span class="line">	fmt.Println(<span class="string">&quot;main&quot;</span>)</span><br><span class="line">	<span class="comment">// 休眠1秒，等待hello执行完</span></span><br><span class="line">	time.Sleep(time.Second)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">hello</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Println(<span class="string">&quot;hello&quot;</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在程序启动时，Go程序就会为main()函数创建一个默认的goroutine。</p>
+<p>我们这里使用关键字go再次创建一个goroutine来执行hello方法</p>
+<p>这里只是简单展示了在Go语言中如何进行并发编程。</p>
+<p>下面直接来个情景，我需要同时打印多个helloworld咋办，记住是需要同时。直接上代码。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;time&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		<span class="keyword">go</span> hello(i)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 让程序延迟3秒，以便让所有goroutine执行完毕</span></span><br><span class="line">	time.Sleep(<span class="number">3</span> * time.Second)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">hello</span><span class="params">(i <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="built_in">println</span>(<span class="string">&quot;Hello&quot;</span>, i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">[Running] <span class="keyword">go</span> run <span class="string">&quot;/Users/jie/space/demo-go/main.go&quot;</span></span><br><span class="line">Hello <span class="number">2</span></span><br><span class="line">Hello <span class="number">5</span></span><br><span class="line">Hello <span class="number">9</span></span><br><span class="line">Hello <span class="number">0</span></span><br><span class="line">Hello <span class="number">4</span></span><br><span class="line">Hello <span class="number">3</span></span><br><span class="line">Hello <span class="number">8</span></span><br><span class="line">Hello <span class="number">7</span></span><br><span class="line">Hello <span class="number">6</span></span><br><span class="line">Hello <span class="number">1</span></span><br><span class="line"></span><br><span class="line">[Done] exited with code=<span class="number">0</span> in <span class="number">3.369</span> seconds</span><br></pre></td></tr></table></figure>
+
+<p>可以看到这里的打印结果并不是按顺序来的，这就是同时运行的结果。</p>
+<p>这里直接使得主goroutine延迟3秒来关闭有点太暴力，我们可以用waitgroup来给每个goroutine来计数，当检测到所有的goroutine都运行完了之后再关闭主goroutine。这样就更加优雅一点，看下面代码：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;sync&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> wg sync.WaitGroup</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		wg.Add(<span class="number">1</span>)	<span class="comment">// 启动一个goroutine就登记+1</span></span><br><span class="line">		<span class="keyword">go</span> hello(i)</span><br><span class="line">	&#125;</span><br><span class="line">  <span class="comment">// 等待所有登记的goroutine都结束</span></span><br><span class="line">	wg.Wait()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">hello</span><span class="params">(i <span class="type">int</span>)</span></span> &#123;</span><br><span class="line">	<span class="built_in">println</span>(<span class="string">&quot;Hello&quot;</span>, i)</span><br><span class="line">	<span class="comment">// goroutine结束就登记-1</span></span><br><span class="line">	<span class="keyword">defer</span> wg.Done()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果主协程退出了，其他任务还执行吗（运行下面的代码测试一下吧）</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// 合起来写</span></span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		i := <span class="number">0</span></span><br><span class="line">		<span class="keyword">for</span> &#123;</span><br><span class="line">			i++</span><br><span class="line">			fmt.Printf(<span class="string">&quot;new goroutine: i = %d\n&quot;</span>, i)</span><br><span class="line">			time.Sleep(time.Second)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;()</span><br><span class="line">	i := <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		i++</span><br><span class="line">		fmt.Printf(<span class="string">&quot;main goroutine: i = %d\n&quot;</span>, i)</span><br><span class="line">		time.Sleep(time.Second)</span><br><span class="line">		<span class="keyword">if</span> i == <span class="number">2</span> &#123;</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 ]]></content>
+      <categories>
+        <category>golang高级教程</category>
+      </categories>
   </entry>
   <entry>
-    <title></title>
-    <url>/2025/02/10/redis%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96/</url>
-    <content><![CDATA[<p>rdb和aof<br>rdb是默认的持久化策略</p>
+    <title>并发编程-锁</title>
+    <url>/2025/01/01/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B-%E9%94%81/</url>
+    <content><![CDATA[<p>程序中有多个协程共享一个资源，就很容易会出现争抢资源的情况</p>
+<p>比如我这里设置一个全局的变量，开启多个线程去改变这个变量的值</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;sync&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a <span class="type">int</span></span><br><span class="line"><span class="keyword">var</span> wg sync.WaitGroup</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	wg.Add(<span class="number">2</span>)</span><br><span class="line">	<span class="keyword">go</span> add()</span><br><span class="line">	<span class="keyword">go</span> add()</span><br><span class="line">	wg.Wait()</span><br><span class="line">	<span class="built_in">println</span>(<span class="string">&quot;a的值为：&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">add</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">5000</span>; i++ &#123;</span><br><span class="line">		a++</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">defer</span> wg.Done()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>比如这里我设置了一个全局的变量a，然后开启了两个协程去增加a的值，我希望程序都执行完了之后，a的值为10000，但实际的执行中却不是。这是因为在两个协程中执行的过程中出现了争夺资源的情况，两个协程都在改变a的值，导致最后的结果不是10000。有一个解决方法就是，一个协程拿到这个a的值之后，另外一个协程只能等着。这里就要引出我们的知识点，锁。</p>
+<p>我们先从互斥锁来进行学习。</p>
+<p>互斥锁，sync.Mutex，简单使用</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;sync&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a <span class="type">int</span></span><br><span class="line"><span class="keyword">var</span> wg sync.WaitGroup</span><br><span class="line"><span class="keyword">var</span> mu sync.Mutex</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	wg.Add(<span class="number">2</span>)</span><br><span class="line">	<span class="keyword">go</span> add()</span><br><span class="line">	<span class="keyword">go</span> add()</span><br><span class="line">	wg.Wait()</span><br><span class="line">	<span class="built_in">println</span>(<span class="string">&quot;a的值为：&quot;</span>, a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">add</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">5000</span>; i++ &#123;</span><br><span class="line">		mu.Lock()</span><br><span class="line">		a++</span><br><span class="line">		mu.Unlock()</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">defer</span> wg.Done()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line">[Running] <span class="keyword">go</span> run <span class="string">&quot;/Users/jie/space/demo-go/main.go&quot;</span></span><br><span class="line">a的值为： <span class="number">10000</span></span><br><span class="line"></span><br><span class="line">[Done] exited with code=<span class="number">0</span> in <span class="number">0.519</span> seconds</span><br></pre></td></tr></table></figure>
+
+<p>互斥锁是一种常用的控制共享资源访问的方法，它能够保证同时只有一个goroutine可以访问共享资源。Go语言中使用sync包的Mutex类型来实现互斥锁。</p>
+<p>对于一个资源来说，通常会有读和写的操作。互斥锁的做法是很极端的，一个协程拿到了资源之后，另外一个协程连看一眼的机会都没有了。对于我们常规的场景来说，这种是不适用的，这里就衍生出了我们下一个知识点</p>
+<p>读写互斥锁，sync.RWMutex</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;sync&quot;</span></span><br><span class="line">	<span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">	x      <span class="type">int64</span></span><br><span class="line">	wg     sync.WaitGroup</span><br><span class="line">	lock   sync.Mutex</span><br><span class="line">	rwlock sync.RWMutex</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">write</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// lock.Lock()   // 加互斥锁</span></span><br><span class="line">	rwlock.Lock() <span class="comment">// 加写锁</span></span><br><span class="line">	x = x + <span class="number">1</span></span><br><span class="line">	time.Sleep(<span class="number">10</span> * time.Millisecond) <span class="comment">// 假设读操作耗时10毫秒</span></span><br><span class="line">	rwlock.Unlock()                   <span class="comment">// 解写锁</span></span><br><span class="line">	<span class="comment">// lock.Unlock()                     // 解互斥锁</span></span><br><span class="line">	wg.Done()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">read</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// lock.Lock()                  // 加互斥锁</span></span><br><span class="line">	rwlock.RLock()               <span class="comment">// 加读锁</span></span><br><span class="line">	time.Sleep(time.Millisecond) <span class="comment">// 假设读操作耗时1毫秒</span></span><br><span class="line">	rwlock.RUnlock()             <span class="comment">// 解读锁</span></span><br><span class="line">	<span class="comment">// lock.Unlock()                // 解互斥锁</span></span><br><span class="line">	wg.Done()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	start := time.Now()</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">10</span>; i++ &#123;</span><br><span class="line">		wg.Add(<span class="number">1</span>)</span><br><span class="line">		<span class="keyword">go</span> write()</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++ &#123;</span><br><span class="line">		wg.Add(<span class="number">1</span>)</span><br><span class="line">		<span class="keyword">go</span> read()</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	wg.Wait()</span><br><span class="line">	end := time.Now()</span><br><span class="line">	fmt.Println(end.Sub(start))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 ]]></content>
+      <categories>
+        <category>golang高级教程</category>
+      </categories>
   </entry>
 </search>
