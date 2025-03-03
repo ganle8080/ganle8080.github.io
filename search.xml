@@ -11,6 +11,33 @@
   </entry>
   <entry>
     <title></title>
+    <url>/2025/03/02/nsq/</url>
+    <content><![CDATA[<p>docker pull nsqio&#x2F;nsq:v1.3.0</p>
+<p>docker run -d –name lookupd -p 4160:4160 -p 4161:4161 nsqio&#x2F;nsq:v1.3.0 &#x2F;nsqlookupd</p>
+<p>docker run -d –name nsqd -p 4150:4150 -p 4151:4151 nsqio&#x2F;nsq:v1.3.0 &#x2F;nsqd –broadcast-address&#x3D;127.0.0.1 –lookupd-tcp-address&#x3D;127.0.0.1:4160 –data-path&#x3D;&#x2F;usr&#x2F;local&#x2F;nsqdata</p>
+<p>docker run -d –name nsqadmin -p 4171:4171 nsqio&#x2F;nsq:v1.3.0 &#x2F;nsqadmin  –lookupd-http-address&#x3D;127.0.0.1:4161</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>常用命令</title>
+    <url>/2025/03/02/docker%E6%95%99%E7%A8%8B-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<p>查看docker镜像<br>docker images</p>
+<p>查询dockerhub中的镜像<br>docker search 关键词</p>
+<p>删除镜像<br>docker rmi 镜像名称<br>    -f 强制删除</p>
+<p>保存镜像<br>docker save -o 目录 镜像名称</p>
+<p>加载压缩包里面的镜像<br>docker load -i 文件</p>
+]]></content>
+      <categories>
+        <category>Docker教程</category>
+      </categories>
+  </entry>
+  <entry>
+    <title></title>
+    <url>/2025/02/16/vue2-%E6%90%AD%E5%BB%BA%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title></title>
     <url>/2025/02/10/fmt%E5%8C%85%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<p><a href="https://blog.csdn.net/weixin_43989347/article/details/134243730?ops_request_misc=&request_id=&biz_id=102&utm_term=golang%E7%9A%84%25c&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-134243730.142%5Ev101%5Epc_search_result_base2&spm=1018.2226.3001.4187">参考文档</a></p>
 <p>快速上手</p>
@@ -34,11 +61,6 @@
 <p>持久性，redo-log来保证</p>
 <p>隔离性，mvcc来保证</p>
 ]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2025/02/10/docker%E6%95%99%E7%A8%8B-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title></title>
